@@ -14,12 +14,11 @@
             
             <v-system-bar></v-system-bar>
             
-            <v-card-title v-bind:style="styleObject">ТЕСТ №2.  Лица</v-card-title>
+            <v-card-title v-bind:style="styleObject">ТЕСТ №1.  Слова</v-card-title>
             
             <div>
-                <v-card-text v-bind:style="styleObject"
-                v-for="(item, i) in items"
-                :key="i" v-text="item.text">
+                <v-card-text v-bind:style="styleObject">
+                Прочитайте список слов и изучите его в течении полутора минут. Попытайтесь произнести слова по порядку. Вслучае ошибок пересчитайте все слова, которые удалось запомнить точно.
                 </v-card-text>
             </div>
         </v-card>
@@ -31,7 +30,12 @@
         
         <!--<v-row justify="center">-->
         <div class="text-center">
-            
+            <!--<v-btn v-bind:style="styleObject"
+                rounded class="ma-2"
+                color="primary"
+                dark @click="$router.push('/topicImg')">
+                Начать
+            </v-btn>-->
             <!--</div>-->        
      
             <v-dialog
@@ -48,47 +52,36 @@
                         Начать
                     </v-btn>
                 </template>
-
                 <v-card>
                     <!--<v-fade-transition mode="out-in">-->
                         <v-row dense class="mx-auto">
-                            <v-col>
-                                <v-card>
-                                    <v-img src="..\картинки\35367.jpg" aspect-ratio="1"
-                                        class="grey lighten-2">
-                                    </v-img>
-                                    <v-card-title>
-                                        Miss Brainne
-                                    </v-card-title>
-                            
-                                </v-card>
-                            </v-col>
-                            <v-col>
-                                <v-card>
-                                <!--<v-card class="mx-auto"
-                                    max-width="400">-->
-                                    <v-img src="..\картинки\35368.png" aspect-ratio="1"
-                                        class="grey lighten-2"></v-img>
-                                    <v-card-title>
-                                        Mr. Shelby
-                                    </v-card-title>
-                                </v-card>
-                            </v-col>
+                            <v-list-item-group v-model="selectedItem">
+                                <v-list-item v-for="(item, i) in items"
+                                :key="i">
+                                    <v-list-item-content>
+                                        
+                                        <v-list-item-title v-bind:style="styleObject" v-text="item.text">
+                                        </v-list-item-title>
+                                        
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list-item-group>
                         </v-row>
                     <!--</v-fade-transition>-->
 
+                    <v-divider></v-divider>
 
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn
                             color="primary"
                             text
-                            @click="$router.push('/topicImg')">
+                            @click="$router.push('/topicWord')">
                             Запомнил(а)
                         </v-btn>
                     </v-card-actions>
                 </v-card>
-                
+
             </v-dialog>
         <!--</v-row>--></div> 
     </v-app>
@@ -101,12 +94,14 @@ export default {
         dialog: false,
         styleObject: {
 
-            fontSize: '35px'
+            fontSize: '30px'
         },
         selectedItem: 1,
         items: 
         [
-            { text: 'Посмотрите на портреты людей. Рассматривать их вы можете не более 4 минут. Затем будут даны теже портреты уже без фамилий. Посторайтесь запомнить имена изображенных людей.'}
+            { text: 'a'},
+            { text: 'b'},
+            { text: 'c'},
         ],
     }),
 }

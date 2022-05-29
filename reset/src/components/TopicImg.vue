@@ -10,23 +10,7 @@
         </div>
 
         <v-container fluid v-bind:style="styleObject" >
-            <!--<v-row>
-                <v-col 
-                class="d-flex child-flex"
-                cols="3">
-                
-                
-                <v-card>
-                    <div>
-                        <v-card-text 
-                        v-for="(item, i) in items"
-                        :key="i"
-                        v-text="item.number + item.text">
-                        </v-card-text>
-                    </div>
-                </v-card>
-                </v-col>-->
-                
+           
             <div class="row ">
                 <div class="col-3">
                     <h3>Варианты</h3>
@@ -50,34 +34,17 @@
                         </div>
                     </draggable>
                 </div>
-                <!-- <rawDisplayer class="col-3" :value="list1" title="List 1" />-->
-                <!--<rawDisplayer class="col-3" :value="list2" title="List 2" />-->
+                
             </div>
-            <!--<v-col v-for="n in 2"
-            :key="n"
-            class="d-flex child-flex"
-            cols="3">-->
+            
             <v-row justify="center">
                 <v-col class="d-flex child-flex"
                 cols="3" >
                     <v-card>
-                        <!--<v-img
-                        :src="`https://picsum.photos/200/300?image=${getImage()}`"
-                        :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
-                        aspect-ratio="1"
-                        class="grey lighten-2">
-                        </v-img>-->
-
+                        
                         <v-img src="..\картинки\35367.jpg" aspect-ratio="1"
                         class="grey lighten-2"></v-img>
-                        <!--<v-card-actions>
-                            <v-col>
-                                <v-text-field
-                                label="Номер ответа"
-                                required>
-                                </v-text-field> 
-                            </v-col>
-                        </v-card-actions>-->
+                        
                     </v-card>
                 </v-col>
                 <v-col class="d-flex child-flex "
@@ -87,12 +54,49 @@
                         class="grey lighten-2"></v-img>
                     </v-card>
                 </v-col>
-            </v-row><v-row justify="center">
-            <div >
-                <v-btn v-bind:style="styleObject"
-                rounded color="primary" dark elevation="9">
-                далее </v-btn>
-            </div></v-row>
+            </v-row>
+            <v-row justify="center">
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="600px"
+    > 
+           
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          далее
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+            <span class="text-h5">Результаты тренинга</span>
+        </v-card-title>
+        <v-card-text>
+            <v-container>
+                <v-row>
+                    <v-list-item>
+                        
+                        <v-list-item-title>Время выполнения</v-list-item-title>
+                    </v-list-item>
+                    <v-btn>Time</v-btn>
+                    <v-btn
+                    color="primary"
+                    text
+                    @click="dialog = false">
+                    Далее
+                    </v-btn>         
+
+                    </v-row>
+                </v-container>
+            </v-card-text>
+        </v-card>
+      </v-dialog></v-row>
+            
         </v-container>
     </v-app>
 </template>
@@ -100,7 +104,7 @@
 <script>
 import draggable from "vuedraggable";// без @
 export default {
-    name: "two-lists",
+  name: "two-lists",
   display: "Two Lists",
   order: 1,
   components: {
@@ -118,6 +122,7 @@ export default {
         name: el.name + " cloned"
       };
     },
+    
     log: function(evt) {
       window.console.log(evt);
     },
@@ -130,19 +135,12 @@ export default {
       },
     },
     data: () => ({
+        dialog: false,
         styleObject: {
 
             fontSize: '23px'
         },
-        //selectedItem: 1,
-        //items: 
-        //[
-        //{ number:'1)', text: 'Mr. Sirl'},
-        //{ number:'2)', text: 'Mrs. Woolridge'},
-        //{ number:'3)', text: 'Mr. Hawkins'},
-        //{ number:'4)', text: 'Miss Finch'},
-        //{ number:'5)', text: 'Miss Alisha'}
-        //],
+      
         list1: [
         { name: "Mr. Sirl", id: 1},
         { name: "Mrs. Woolridge", id: 2 },

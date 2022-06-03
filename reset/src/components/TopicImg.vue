@@ -1,13 +1,13 @@
 <template >
     <v-app >
-        <div class="v-toolbar__content orange" 
+        <!--<div class="v-toolbar__content orange" 
             style="height: 64px" >
             <v-btn icon @click="$router.push('/')">
                 <v-icon>mdi-arrow-left</v-icon>
             </v-btn>
 
             <div class="v-toolbar__title" v-bind:style="styleObject">Лицо-ФИО</div>
-        </div>
+        </div>-->
 
         <v-container fluid v-bind:style="styleObject" >
            
@@ -142,11 +142,11 @@ export default {
         },
       
         list1: [
-        { name: "Mr. Sirl", id: 1},
-        { name: "Mrs. Woolridge", id: 2 },
-        { name: "Mr. Shelby", id: 3 },
-        { name: "Miss Finch", id: 4 },
-        { name: "Miss Brainne", id: 5 }
+        { name: "Аврора", id: 1},
+        { name: "Иосиф", id: 2 },
+        { name: "Владимир", id: 3 },
+        { name: "Кирилл", id: 4 },
+        { name: "Маргарита", id: 5 }
         ],
         list2: [],
     }),

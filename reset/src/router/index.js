@@ -1,4 +1,4 @@
-//import Vue from 'vue'
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 //import Home from '../views/Home.vue'
 
@@ -9,42 +9,67 @@ import Topic1 from '../components/Topic1'
 import TopicWord from '../components/TopicWord'
 import TopicVar from '../components/TopicVar'
 
-//Vue.use(VueRouter)
+import Layout from '../components/Layout'
+
+import Settings from '../settings/Settings'
+
+
+
+Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
   routes:[
-  {
+    {
     path: '/',
     component: AppHeader
     },
     {
+      path: '/settings',
+      name:'settings',
+      component: Settings
+      },
+
+    {
       path: '/topicVar',
       name:'difficulty-level',
-      component: TopicVar
+      component: Layout,
+      children: [
+        {
+          path: '',
+          name:'difficulty-level',
+          component: TopicVar
+        },
+        {
+          path: 'topic2',
+          name:'name',
+          component: Topic4
+        },
+        {
+          path: 'topic2/topicImg',
+          name:'task4',
+          component: TopicImg
+        }
+      ]
     },
-  
-{
-  path: '/topic4',
-  name:'name',
-  component: Topic4
-    },
+
     {
       path: '/topic1',
       name:'instruction',
-      component: Topic1
+      component: Layout,
+      children: [
+        {
+          path: '',
+          name:'instruction',
+          component: Topic1
+        },
+        {
+          path: 'topicWord',
+          name:'words',
+          component: TopicWord
+        }
+      ]
     },
-    {
-      path: '/topicWord',
-      name:'words',
-      component: TopicWord
-    },
-{
-  path: '/topicImg',
-  name:'task4',
-  component: TopicImg
-}
-  
 ]
 })
 //{

@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <v-treeview
         v-model="tree"
         :open="initiallyOpen"
@@ -33,3 +33,4 @@ export default {
     }),
   }
 </script>
+-->

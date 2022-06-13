@@ -110,9 +110,8 @@
             </v-card>
         </v-dialog>
         <v-row justify="center">
-        
-        <v-btn v-bind="attrs" v-on="on" outlined color="primary" @click="$router.push('/')">Назад</v-btn></v-row>
-                
+        <v-btn v-bind="attrs" v-on="on" outlined color="primary" @click="$router.push('/')">Назад</v-btn>
+        </v-row>
     </v-app>
 </template>
 

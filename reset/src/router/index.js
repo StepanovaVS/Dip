@@ -1,29 +1,42 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-//import Home from '../views/Home.vue'
 
 import AppHeader from '../components/AppHeader'
-import Topic4 from '../components/Topic4'
-import TopicImg from '../components/TopicImg'
-import Topic1 from '../components/Topic1'
-import TopicWord from '../components/TopicWord'
-import TopicVar from '../components/TopicVar'
+import Statistics from '../components/Statistics'
 
-import Layout from '../components/Layout'
+import Topic2 from '../components/Topic2/Topic2'
+import TopicImg from '../components/Topic2/TopicImg'
+import Topic1 from '../components/Topic1/Topic1'
+import TopicWord from '../components/Topic1/TopicWord'
+import TopicVar from '../components/Topic2/TopicVar'
+
+import NotFound from '../components/draft/NotFound'
+
+
+import Layout1 from '../components/draft/Layout1'
+import Layout2 from '../components/draft/Layout2'
+
 
 import Settings from '../settings/Settings'
-
-
-
 Vue.use(VueRouter);
 
 export default new VueRouter({
   mode: 'history',
-  routes:[
+  routes: [
+    {
+      path: '*',
+      name: 'Not-found',
+      component: NotFound
+    },
     {
     path: '/',
     component: AppHeader
     },
+    {
+      path: '/static',
+      name: 'statistics',
+      component: Statistics
+      },
     {
       path: '/settings',
       name:'settings',
@@ -33,7 +46,7 @@ export default new VueRouter({
     {
       path: '/topicVar',
       name:'difficulty-level',
-      component: Layout,
+      component: Layout2,
       children: [
         {
           path: '',
@@ -43,11 +56,11 @@ export default new VueRouter({
         {
           path: 'topic2',
           name:'name',
-          component: Topic4
+          component: Topic2
         },
         {
           path: 'topic2/topicImg',
-          name:'task4',
+          name:'task2',
           component: TopicImg
         }
       ]
@@ -56,7 +69,7 @@ export default new VueRouter({
     {
       path: '/topic1',
       name:'instruction',
-      component: Layout,
+      component: Layout1,
       children: [
         {
           path: '',
@@ -72,16 +85,4 @@ export default new VueRouter({
     },
 ]
 })
-//{
-    //path: '/',
-    //name: 'Home',
-    //component: Home
-  //},
-  //{
-    //path: '/about',
-    //name: 'About',
-    /// route level code-splitting
-    ///this generates a separate chunk (about.[hash].js) for this route
-    /// which is lazy-loaded when the route is visited.
-    //component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  //}
+

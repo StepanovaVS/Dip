@@ -34,7 +34,7 @@
         </v-sheet>
         -->
         <v-container grid-list-xl>
-        <v-layout >
+        <v-layout>
         <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
           <v-card style="top:5%" max-width="750" class="mx-auto" outlined>
             
@@ -52,9 +52,11 @@
                 class="mx-auto" max-width="300">
 
                 <template v-slot:activator="{ on, attrs }" >
-
-              <v-btn  v-bind="attrs"
-                        v-on="on" outlined color="primary" @click="$router.push('/topic1')">Начать упражнение</v-btn>
+                  <v-btn  v-bind="attrs"
+                          v-on="on" outlined color="primary" @click="$router.push('/')">Назад</v-btn>
+              <v-btn style=""  v-bind="attrs"
+                        v-on="on" outlined color="primary" @click="$router.push('/topic1'); pushArrayForWord()">
+                Начать упражнение</v-btn>
                 </template></v-dialog>
             </v-card-actions>
           </v-card>
@@ -148,6 +150,19 @@ export default {
             { text: 'парус'}
         ],
     }),
+  computed:{
+    getArrayForWord(){
+      return this.$store.getters.getArrayForWord;
+    },
+  },
+  methods: {
+      pushArrayForWord(){
+        this.items = this.getArrayForWord;
+        return this.items(response => {
+          this.$store.dispatch('getArrayForWord',response.data);
+        });
+      }
+  }
 }
 </script>
 <style scoped></style>

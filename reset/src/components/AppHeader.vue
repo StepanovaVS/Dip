@@ -59,46 +59,12 @@
       
 
     </v-navigation-drawer color="teal">-->
-    <v-toolbar flat color= "orange">
-      <v-btn icon @click="$router.push('settings')" >
-        <v-icon>mdi-cog-outline</v-icon>
-      </v-btn>
-    <!--<v-toolbar flat >-->
-      <v-toolbar-title v-bind:style="styleObject">Мнемоничекская память</v-toolbar-title>
-      <v-spacer/>
 
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-switch v-model="$vuetify.theme.dark" hide-details v-on="on"/>
-        </template>
 
-        <span v-if="$vuetify.theme.dark">Использовать светлую тему
-        </span>
-        <span v-else>Использовать темную тему</span>
-      </v-tooltip>
-      <v-menu v-bind:disabled="!isAuth" bottom origin="center center" transition="slide-x-reverse-transition">
-        <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on">
-            <v-icon>mdi-account-circle-outline</v-icon>
-          </v-btn>
-        </template>
-        <v-list dense rounded>
-          <v-list-item @click="logout" color="like_color">
-            <v-list-item-icon>
-              <v-icon color="like_color">mdi-exit-to-app</v-icon>
-            </v-list-item-icon>
-            
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      
-      </v-toolbar>
-      <v-divider/>
-    
 
       <!--<div class="v-toolbar__title" v-bind:style="styleObject">Мнемоничекская память</div>-->
-      
-    
+
+
     <v-container grid-list-xl>
       <v-layout >
         <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
@@ -189,8 +155,9 @@
       drawer: false,
       group: null,
       styleObject: {
-
-            fontSize: '23px'
+            fontSize: '20px',
+            fontWeight: 'bold',
+            fontFamily: 'Roboto, sans-serif'
         },
     })
   }

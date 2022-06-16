@@ -1,21 +1,11 @@
 <template>
     <v-app>
-        <!--<div class="v-toolbar__content orange" 
-            style="height: 64px;" >
-
-            <v-btn icon @click="$router.push('/')" >
-                <v-icon >mdi-arrow-left</v-icon>
-            </v-btn>
-
-            <div v-bind:style="styleObject" class="v-toolbar__title">Задание</div>
-        </div>-->
         <v-container grid-list-xl v-bind:style="styleObject">
       <v-layout >
         <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
           <v-card style="top:5%" max-width="750" class="mx-auto"  outlined>
-        <!--<v-container fluid v-bind:style="styleObject">-->
+
            <v-row class="text-center" justify="center">
-            <!--<div class="row " class="text-center">-->
                 <div class="col-3">
                     <h3>Варианты</h3>
                     <draggable class="list-group" :list="list1" group="people" @change="log">

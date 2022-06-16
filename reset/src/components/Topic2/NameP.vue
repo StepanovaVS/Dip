@@ -1,27 +1,14 @@
 <template >
     <v-app >
-        <!--<div class="v-toolbar__content orange" 
-            style="height: 64px" >
-            <v-btn icon @click="$router.push('/')">
-                <v-icon>mdi-arrow-left</v-icon>
-            </v-btn>
-
-            <div class="v-toolbar__title" v-bind:style="styleObject">Лицо-ФИО</div>
-        </div>-->
-
         <v-container fluid v-bind:style="styleObject" >
-           
-
-            
             <v-row justify="center">
                 <v-col class="d-flex child-flex"
                 cols="3" >
                     <v-card>
-                        
-                        <v-img src="..\картинки\35367.jpg" aspect-ratio="1"
+                        <v-img src="..\..\картинки\35367.jpg" aspect-ratio="1"
                         class="grey lighten-2"></v-img>
-                      <draggable class="list-group" :list="listFirstAnswer" group="people" @change="log">
-                        <div
+                      <draggable  class="list-group" :list="listFirstAnswer" group="people" @change="log">
+                        <div 
                             style="border-radius: 10px; text-align: center"
                             class="list-group-item"
                             v-for="(element) in listFirstAnswer"
@@ -34,7 +21,7 @@
                 <v-col class="d-flex child-flex "
                 cols="3">
                     <v-card >
-                        <v-img src="..\картинки\35368.png" aspect-ratio="1"
+                        <v-img src="..\..\картинки\35368.png" aspect-ratio="1"
                         class="grey lighten-2"></v-img>
                       <draggable class="list-group" :list="listSecondAnswer" group="people" @change="log">
                         <div
@@ -54,8 +41,8 @@
               <h3 style="display: flex">Варианты</h3>
                 <div style=" display: flex"><v-icon>mdi-timer-outline</v-icon>{{formatTimer(pageOption.timeReading)}}</div>
               </div>
-              <draggable class="list-group" :list="listTask" group="people" @change="log">
-                <div style="border-radius: 10px; background:#FFDEAD; text-align: center; margin-top: 5px"
+              <draggable  class="list-group" :list="listTask" group="people" @change="log">
+                <div  style="border-radius: 10px; background:#FFDEAD; text-align: center; margin-top: 5px"
                      class="list-group-item"
                      v-for="(element) in listTask"
                      :key="element.name">
@@ -136,17 +123,17 @@ export default {
     dateStartLesson:new Date(),
     timeSecondsForLesson: 0,
     listTask: [
-      { name: "Аврора", id: 1},
-      { name: "Иосиф", id: 2 },
-      { name: "Владимир", id: 3 },
-      { name: "Кирилл", id: 4 },
-      { name: "Маргарита", id: 5 }
+      { name: "Аврора Владимировна", id: 1},
+      { name: "Иосиф Георгиевич", id: 2 },
+      { name: "Владимир Дмитриевич", id: 3 },
+      { name: "Кирилл Изотович", id: 4 },
+      { name: "Маргарита Григорьевна", id: 5 }
     ],
     listFirstAnswer: [],
     listSecondAnswer: [],
     TrueAnswer: [
-      { name: "Аврора", id: 1},
-      { name: "Владимир", id: 3 },
+      { name: "Аврора Владимировна", id: 1},
+      { name: "Владимир Дмитриевич", id: 3 },
     ],
     result: 0,
   }),

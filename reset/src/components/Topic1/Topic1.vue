@@ -1,16 +1,13 @@
 <template>
     <v-app>
-
         <v-container grid-list-xl>
-        <v-layout >
+        <v-layout>
         <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
           <v-card style="top:5%" max-width="750" class="mx-auto" outlined>
+            <v-card-title v-bind:style="styleObject">Слова</v-card-title>
+                   
             
-            
-                          
-            <v-card-title v-bind:style="styleObject">ТЕСТ №1.  Слова</v-card-title>
-            
-            <v-card-text v-bind:style="styleObject">Прочитайте список слов и изучите его в течении полутора минут.</v-card-text>
+            <v-card-text v-bind:style="styleObject">Прочитайте список слов и запомните его.</v-card-text>
             <v-divider/>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -20,9 +17,11 @@
                 class="mx-auto" max-width="300">
 
                 <template v-slot:activator="{ on, attrs }" >
-
-              <v-btn  v-bind="attrs"
-                        v-on="on" outlined color="primary" @click="$router.push({name:'instruction'})">Начать упражнение</v-btn>
+                  <v-btn  v-bind="attrs"
+                          v-on="on" outlined color="primary" @click="$router.push('/')">Назад</v-btn>
+              <v-btn style=""  v-bind="attrs"
+                        v-on="on" outlined color="primary" @click="$router.push('/topic1'); pushArrayForWord()">
+                Начать упражнение</v-btn>
                 </template></v-dialog>
             </v-card-actions>
           </v-card>
@@ -30,16 +29,11 @@
       </v-layout></v-container>
 
         
-        <!--<v-row justify="center">-->
-        <div class="text-center">       
-     
+        <div class="text-center">      
             <v-dialog 
                 v-model="dialog"
                 class="mx-auto" max-width="300">
-
-                
                 <v-card >
-                    <!--<v-fade-transition mode="out-in">-->
                         <v-row dense class="mx-auto" justify="center">
                             <v-list>
                                 <v-list-item v-for="(item, i) in items"
@@ -48,20 +42,7 @@
                                         </v-list-item-title>
                                 </v-list-item>
                             </v-list>
-                            <!--<v-list-item-group v-model="selectedItem">
-                                <v-list-item v-for="(item, i) in items"
-                                :key="i">
-                                
-                                    <v-list-item-content>
-                                        
-                                        <v-list-item-title v-bind:style="styleObject" v-text="item.text">
-                                        </v-list-item-title>
-                                        
-                                    </v-list-item-content>
-                                </v-list-item>
-                            </v-list-item-group>-->
                         </v-row>
-                    <!--</v-fade-transition>-->
                     <v-sheet 
                         height="10"
                         class="overflow-hidden">
@@ -80,7 +61,6 @@
                 </v-card>
 
             </v-dialog></div>
-        <!--</v-row>-->
     </v-app>
 </template>
 
@@ -97,18 +77,31 @@ export default {
         selectedItem: 1,
         items: 
         [
-            { text: 'мышка'},
-            { text: 'краска'},
-            { text: 'стена'},
-            { text: 'воробей'},
-            { text: 'флаг'},
-            { text: 'заря'},
-            { text: 'свеча'},
-            { text: 'банк'},
-            { text: 'лесник'},
-            { text: 'парус'}
+            { text: '1) Мышка'},
+            { text: '2) Краска'},
+            { text: '3) Стена'},
+            { text: '4) Воробей'},
+            { text: '5) Флаг'},
+            { text: '6) Заря'},
+            { text: '7) Свеча'},
+            { text: '8) Банк'},
+            { text: '9) Лесник'},
+            { text: '10) Парус'}
         ],
     }),
+  computed:{
+    getArrayForWord(){
+      return this.$store.getters.getArrayForWord;
+    },
+  },
+  methods: {
+      pushArrayForWord(){
+        //this.items = this.getArrayForWord;
+        return this.items(response => {
+          this.$store.dispatch('getArrayForWord',response.data);
+        });
+      }
+  }
 }
 </script>
 <style scoped></style>

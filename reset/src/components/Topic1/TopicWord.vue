@@ -1,133 +1,182 @@
 <template>
     <v-app>
+      <v-container grid-list-xl>
+        <v-layout>
+        <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
+          <v-card style="top:5%" max-width="750" class="mx-auto" outlined>
+            <v-card-text v-bind:style="styleObject">На рабочем столе появился список слов, перетаскивая, нужно восстановить их порядок.</v-card-text>
+            
+            <v-row class="text-center" justify="center">
+            <div v-bind:style="styleObject" class="col-3"><div style=" display: flex"><v-icon>mdi-timer-outline</v-icon>{{formatTimer(pageOption.timeReading)}}</div></div></v-row>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout></v-container>
         <v-container grid-list-xl v-bind:style="styleObject">
       <v-layout >
         <v-flex xs12 sm10 md8 offset-sm2 offset-md-4 offset-xs-6 >
           <v-card style="top:5%" max-width="750" class="mx-auto"  outlined>
-        <!--<v-container fluid v-bind:style="styleObject">-->
+
            <v-row class="text-center" justify="center">
-            <!--<div class="row " class="text-center">-->
+            
                 <div class="col-3">
+                  
                     <h3>Варианты</h3>
                     <draggable class="list-group" :list="list1" group="people" @change="log">
-                        <div style="background-color:#FFDEAD" 
-                            class="list-group-item"
-                            v-for="(element) in list1" 
-                            :key="element.name"> <!--(element, index)-->
-                            {{ element.name }} {{ index }}
-                        
-                        </div>
+                      <div style="border-radius: 10px; background:#FFDEAD; text-align: center; margin-top: 5px"
+                           class="list-group-item"
+                           v-for="(element) in list1"
+                           :key="element.name">
+                        <strong style="font-size: 30px; ">{{ element.name }}</strong>
+                      </div>
                     </draggable>
                 </div>
                 <div class="col-3">
                     
                     <h3>Ответ</h3>
+                    
                     <draggable class="list-group" :list="list2" group="people" @change="log">
-                        <div style="background-color:#FFDEAD"
-                            class="list-group-item"
-                            v-for="(element) in list2"
-                            :key="element.name">
-                            {{ element.name }} {{ index }}
-                        </div>
+                      <div style="border-radius: 10px; background:#FFDEAD; text-align: center; margin-top: 5px"
+                           class="list-group-item"
+                           v-for="(element) in list2"
+                           :key="element.name">
+                        <strong style="font-size: 30px; ">{{ element.name }}</strong>
+                      </div>
                     </draggable>
                 </div>
             </v-row><v-divider/>
-            <!--<v-card-actions>
+           <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn outlined color="primary" @click="$router.push('/')">Проверить</v-btn>
+               <!--<v-btn outlined color="primary" @click="ComparingArrays()">Проверить</v-btn>
             </v-card-actions>-->
-            <v-card-actions><v-spacer></v-spacer><v-dialog
+           
+    <v-dialog
       v-model="dialog"
-      persistent class="mx-auto"
-      max-width="600px"> 
+      persistent
+      max-width="600px"
+    >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on">
-          проверить
-        </v-btn>
+          <v-btn
+              large
+              color="primary"
+              dark
+              v-bind="attrs"
+              v-on="on"
+              @click="stopTimer(); scoreCalculate()"
+          >
+            <strong>проверить</strong>
+          </v-btn
+          >
+
       </template>
-      <v-card><div class="text-center">
+      <v-card>
         <v-card-title class="text-h5 grey lighten-2">
-            <span class="text-h5">Результаты тренинга</span>
+            <span class="text-h5">Результат:</span>
         </v-card-title>
         <v-card-text>
-            <v-container>
-                <v-row>
-                    <v-list-item>
-                      <v-col >
-                        <v-list-item>
-                          <v-list-item-title>Время выполнения</v-list-item-title>
-                          <v-list-item-title>00:12</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                          <v-list-item-title>Верных ответов</v-list-item-title>
-                          <v-list-item-title>0/10</v-list-item-title>
-                        </v-list-item>
-                        <v-list-item>
-                          <v-list-item-title>Ваша оценка</v-list-item-title>
-                          <v-list-item-title>2</v-list-item-title>
-                        </v-list-item>
-                        </v-col>
-                        
+            <v-container >
+                <v-row style="justify-content: center">
+                  <v-list-item style="display: inline-block">
+                    <v-list-item  style="display: flex; align-content: center; justify-content: center">
+                      <v-list-item-title v-bind:style="styleObject">Время выполнения:  {{formatTimer(pageOption.timeReading)}}
+                       </v-list-item-title>
                     </v-list-item>
-                    <v-row justify="center">
-                    <v-btn 
+                    <v-list-item>
+                    <v-list-item-title v-bind:style="styleObject">Результат: {{result}}/10</v-list-item-title>
+                  </v-list-item>
+
+                  </v-list-item>
+                  <v-btn
+                    outlined
                     color="primary"
-                    text
-                    @click="$router.push('/')">
-                    Назад
-                    </v-btn> </v-row>
-                    </v-row>
-                </v-container>
-            </v-card-text></div>
-        </v-card>
-      </v-dialog></v-card-actions>
-           </v-card>
-           
-           </v-flex>
-           </v-layout>
-           </v-container>
+                    @click="dialog = false; $router.push({path: '/'})">
+                  Выход
+                </v-btn>
+                </v-row>
+            </v-container>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+           </v-card-actions></v-card></v-flex></v-layout></v-container>
+            
+           <!--</div>-->
     </v-app>
 </template>
 
 <script>
 import draggable from "vuedraggable";
 export default {
-    name: "two-lists",
+  data: () => ({
+    dialog: false,
+    pageOption: {
+      timeReading: 0,
+      timer: null,
+    },
+    styleObject: {
+      fontSize: '24px'
+    },
+    selectedItem: 1,
+    TrueAnswer: [],
+    list1: [],
+    list2: [],
+    shuffleList: [],
+    result: 0,
+  }),
+  name: "two-lists",
   display: "Two Lists",
   order: 1,
   components: {
     draggable
   },
-    data: () => ({
-        dialog: false,
-        styleObject: {
+  mounted() {
+    this.ShuffleWords();
+    this.TrueAnswer = this.getArrayForWord;
+    this.startTimer()
+  },
 
-            fontSize: '20px'
-        },
-        selectedItem: 1,
-        list1: [
-        { name: 'губка', id: 1},
-        { name: 'ласты', id: 2},
-        { name: 'стена', id: 3},
-        { name: 'краска', id: 4},
-        { name: 'стена', id: 5},
-        { name: 'ключ', id: 6},
-        { name: 'мышка', id: 7},          
-        { name: 'банк', id: 8},
-        { name: 'заря', id: 9},
-        { name: 'желе', id: 10},
-        { name: 'свеча', id: 11},
-        { name: 'флаг', id: 12},
-        { name: 'лесник', id: 13},
-        { name: 'воробей', id: 14},
-        { name: 'парус', id: 15}
-        ],
-        list2: [],
-    }),
+  computed: {
+    getArrayForWord(){
+      return this.$store.getters.getArrayForWord;
+    },
+  },
+  methods: {
+    ShuffleWords(){
+      this.shuffleList = this.getArrayForWord;
+      this.shuffleList.sort(() => Math.random() - 0.5)
+      this.list1 = this.shuffleList;
+      },
+    ComparingArrays(){
+      for(let i = 0; i < this.getArrayForWord.length; i++){
+        if(this.getArrayForWord[i] === this.list2[i]){
+          this.result++;
+        }
+      }
+    },
+    log: function(evt) {
+      window.console.log(evt);
+    },
+    startTimer() {
+      this.pageOption.timer = setInterval(() => {
+        this.pageOption.timeReading++;
+      }, 1000);
+    },
+    stopTimer(){
+      clearTimeout(this.pageOption.timer);
+    },
+
+    formatTimer: function (times) {
+      let sec_num = parseInt(times, 10);
+      let hours = Math.floor(sec_num / 3600);
+      let minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+      let seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+      if (minutes < 10) { minutes = "0" + minutes; }
+      if (seconds < 10) { seconds = "0" + seconds; }
+      return minutes + ':' + seconds;
+    },
+  },
 }
 </script>
 <style scoped></style>

@@ -22,21 +22,10 @@
                                     <v-btn outlined block large color="primary" @click="$router.push({name: 'exerciseFull'})">ФИО</v-btn>
                                 </v-col>
                                 <v-col cols="12" sm="8">
-                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'faces-level'})">Выход</v-btn>
+                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'level'})">Выход</v-btn>
                                 </v-col>
                             </v-row>
                         </v-card-actions>
-
-                        <!--<v-list-item-content v-bind:style="styleObject">
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'name'})">Имя</v-btn>
-                        <v-divider/>
-
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'exerciseNP'})">Имя–отчество</v-btn>
-                        <v-divider/>
-
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'exerciseFull'})">ФИО</v-btn>
-
-                        </v-list-item-content>-->
                     </v-card>
                 </v-col>
             </v-row>

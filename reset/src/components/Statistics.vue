@@ -20,31 +20,6 @@
                                 <div class="font-weight-bold ml-8 mb-2">
                                     13.06.22
                                 </div>
-
-                                <!--<v-timeline
-                                    align-top
-                                    dense
-                                >
-                                    <v-timeline-item
-                                        small
-                                    >
-                                        <div>
-                                            <div class="font-weight-normal">
-                                                <strong>Время выполнения</strong>
-                                            </div> 
-                                            <div>05:12</div>
-                                            <div class="font-weight-normal">
-                                                <strong>Верных ответов</strong>
-                                            </div>
-                                            <div>1/2</div>
-                                            <div class="font-weight-normal">
-                                                <strong>Оценка</strong>
-                                            </div>
-                                            <div>3</div>
-                                        </div>
-                                    </v-timeline-item>
-                                </v-timeline>-->
-                                
                                 <v-list>
                                     <v-list-item>
                                         <v-list-item-avatar>

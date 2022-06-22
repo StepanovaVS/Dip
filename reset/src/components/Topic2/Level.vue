@@ -7,36 +7,28 @@
         
                         <v-card-title v-bind:style="styleObject" outlined color="primary" >
                             <v-row justify="center">
-                                Лица
+                                Количество лиц
                             </v-row>
                         </v-card-title>
                         <v-card-actions>
                         <v-row justify="center" align="center">
                                 <v-col cols="12" sm="8">
-                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'name'})">Имя</v-btn>
+                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'difficulty-level'})">2</v-btn>
                                 </v-col>
                                 <v-col cols="12" sm="8">
-                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'exerciseNP'})">Имя–отчество</v-btn>
+                                    <v-btn disabled outlined block large color="primary" @click="$router.push({name: 'training'})">3</v-btn>
                                 </v-col>
                                 <v-col cols="12" sm="8">
-                                    <v-btn outlined block large color="primary" @click="$router.push({name: 'exerciseFull'})">ФИО</v-btn>
+                                    <v-btn disabled outlined block large color="primary" @click="$router.push({name: 'training'})">4</v-btn>
+                                </v-col>
+                                <v-col cols="12" sm="8">
+                                    <v-btn disabled outlined block large color="primary" @click="$router.push({name: 'training'})">5</v-btn>
                                 </v-col>
                                 <v-col cols="12" sm="8">
                                     <v-btn outlined block large color="primary" @click="$router.push({name: 'faces-level'})">Выход</v-btn>
                                 </v-col>
                             </v-row>
                         </v-card-actions>
-
-                        <!--<v-list-item-content v-bind:style="styleObject">
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'name'})">Имя</v-btn>
-                        <v-divider/>
-
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'exerciseNP'})">Имя–отчество</v-btn>
-                        <v-divider/>
-
-                        <v-btn v-bind:style="styleObject" outlined color="primary" @click="$router.push({name: 'exerciseFull'})">ФИО</v-btn>
-
-                        </v-list-item-content>-->
                     </v-card>
                 </v-col>
             </v-row>
